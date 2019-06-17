@@ -6,6 +6,8 @@ const siteContent = {
     "nav-item-4": "Features",
     "nav-item-5": "About",
     "nav-item-6": "Contact",
+    "nav-item-7": "Careers",
+    "nav-item-8": "Intro",
     "img-src": "img/logo.png"
   },
   "cta": {
@@ -44,13 +46,25 @@ logo.setAttribute('src', siteContent["nav"]["img-src"]);
 const navigation = document.querySelectorAll('a');
 console.log(navigation);
 
+// Navigation links
 navigation[0].textContent = siteContent.nav["nav-item-1"];
 navigation[1].textContent = siteContent.nav["nav-item-2"];
 navigation[2].textContent = siteContent.nav["nav-item-3"];
 navigation[3].textContent = siteContent.nav["nav-item-4"];
 navigation[4].textContent = siteContent.nav["nav-item-5"];
 navigation[5].textContent = siteContent.nav["nav-item-6"];
-navigation.forEach(element => element.setAttribute('style', 'color: green'));
+
+let link = document.createElement("a");
+let link2 = document.createElement("a");
+
+link.setAttribute('href', '#');
+link2.setAttribute('href', '#');
+link2.textContent = siteContent.nav["nav-item-8"];
+
+document.querySelector('nav').appendChild(link).textContent = siteContent.nav["nav-item-7"];
+document.querySelector('nav').prepend(link2);
+
+navigation.forEach(element => element.setAttribute('style', 'color: green'))
 
 // Update the Masthead Text
 document.querySelector('.cta-text h1').textContent = siteContent.cta.h1;
@@ -91,4 +105,7 @@ document.querySelectorAll('.contact p')[1].textContent = siteContent.contact.pho
 document.querySelectorAll('.contact p')[2].textContent = siteContent.contact.email;
 document.querySelectorAll('.contact p')[0].style.whiteSpace = 'pre-line';
 
+// Footer/Copyright
 document.querySelector('footer p').textContent = siteContent.footer.copyright;
+
+
