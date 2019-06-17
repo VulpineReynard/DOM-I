@@ -28,7 +28,7 @@ const siteContent = {
   },
   "contact": {
     "contact-h4" : "Contact",
-    "address" : "123 Way 456 Street Somewhere, USA",
+    "address" : "123 Way 456 Street \n Somewhere, USA",
     "phone" : "1 (888) 888-8888",
     "email" : "sales@greatidea.io",
   },
@@ -36,11 +36,10 @@ const siteContent = {
     "copyright" : "Copyright Great Idea! 2018"
   },
 };
-const linebreak = document.createElement("br");
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
 const navigation = document.querySelectorAll('a');
 console.log(navigation);
@@ -51,9 +50,11 @@ navigation[2].textContent = siteContent.nav["nav-item-3"];
 navigation[3].textContent = siteContent.nav["nav-item-4"];
 navigation[4].textContent = siteContent.nav["nav-item-5"];
 navigation[5].textContent = siteContent.nav["nav-item-6"];
+navigation.forEach(element => element.setAttribute('style', 'color: green'));
 
 // Update the Masthead Text
 document.querySelector('.cta-text h1').textContent = siteContent.cta.h1;
+document.querySelector('.cta-text h1').style.whiteSpace = 'pre-line';
 
 // Update Button Text
 document.querySelector(".cta-text button").textContent = siteContent.cta["button"];
@@ -62,9 +63,8 @@ document.querySelector(".cta-text button").textContent = siteContent.cta["button
 document.querySelector('.cta img').setAttribute('src', siteContent.cta["img-src"]);
 
 // Top Content
-let topContentHeaders = document.querySelectorAll('.top-content div h4');
-topContentHeaders[0].textContent = siteContent["main-content"]["features-h4"];
-topContentHeaders[1].textContent = siteContent["main-content"]["about-h4"];
+document.querySelectorAll('.top-content div h4')[0].textContent = siteContent["main-content"]["features-h4"];
+document.querySelectorAll('.top-content div h4')[1].textContent = siteContent["main-content"]["about-h4"];
 
 let topContentText = document.querySelectorAll('.top-content div p');
 topContentText[0].textContent = siteContent["main-content"]["features-content"];
@@ -89,5 +89,6 @@ document.querySelector('.contact h4').textContent = siteContent.contact["contact
 document.querySelectorAll('.contact p')[0].textContent = siteContent.contact.address;
 document.querySelectorAll('.contact p')[1].textContent = siteContent.contact.phone;
 document.querySelectorAll('.contact p')[2].textContent = siteContent.contact.email;
+document.querySelectorAll('.contact p')[0].style.whiteSpace = 'pre-line';
 
 document.querySelector('footer p').textContent = siteContent.footer.copyright;
