@@ -68,6 +68,7 @@ link2.textContent = siteContent.nav["nav-item-8"];
 const newNavigation = document.querySelectorAll('nav a');
 newNavigation.forEach(element => element.setAttribute('style', 'color: green'));
 
+
 // Update the Masthead Text
 document.querySelector('.cta-text h1').textContent = siteContent.cta.h1;
 document.querySelector('.cta-text h1').style.whiteSpace = 'pre-line';
@@ -107,14 +108,33 @@ document.querySelectorAll('.contact p')[1].textContent = siteContent.contact.pho
 document.querySelectorAll('.contact p')[2].textContent = siteContent.contact.email;
 document.querySelectorAll('.contact p')[0].style.whiteSpace = 'pre-line';
 
-// Footer/Copyright
+// Footer-Copyright
 document.querySelector('footer p').textContent = siteContent.footer.copyright;
 
-// Styling
-document.querySelector('nav a').onmouseover = function() {
-  this.style.transform = 'scale(1.5)';
+//-----Styling------//
+const linkHover = function() {
+  this.style.transform = 'scale(1.5)'; 
+  this.style.transition = 'all .1s ease-in-out';
+  this.style.backgroundColor = 'lightgrey';
+  this.style.padding = '2px';
+  this.style.borderRadius = '5px';
+  this.style.textDecoration = 'none';
+  this.style.boxShadow = '0 3px 3px 0 darkgrey'
 }
 
-document.querySelector('nav a').onmouseout = function() {
+const linkHover2 = function() {
   this.style.transform = 'scale(1.0)';
+  this.style.backgroundColor = 'lightblue';
 }
+
+newNavigation.forEach(element => { 
+  element.addEventListener("mouseover", linkHover);
+  element.addEventListener("mouseout", linkHover2);
+});
+
+const changeText = function() {
+  document.querySelector('.cta-text h1').textContent = "DOM \n Is \n Painful";
+  document.querySelector('.cta #cta-img').setAttribute('src', 'img/stress.jpg');
+}
+
+document.querySelector(".cta-text button").addEventListener("click", changeText);
