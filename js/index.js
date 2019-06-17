@@ -43,7 +43,7 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
-const navigation = document.querySelectorAll('a');
+const navigation = document.querySelectorAll('nav a');
 console.log(navigation);
 
 // Navigation links
@@ -54,17 +54,19 @@ navigation[3].textContent = siteContent.nav["nav-item-4"];
 navigation[4].textContent = siteContent.nav["nav-item-5"];
 navigation[5].textContent = siteContent.nav["nav-item-6"];
 
+//Add 2 more links to navigation bar
 let link = document.createElement("a");
 let link2 = document.createElement("a");
+
+document.querySelector('nav').appendChild(link).textContent = siteContent.nav["nav-item-7"];
+document.querySelector('nav').prepend(link2);
 
 link.setAttribute('href', '#');
 link2.setAttribute('href', '#');
 link2.textContent = siteContent.nav["nav-item-8"];
 
-document.querySelector('nav').appendChild(link).textContent = siteContent.nav["nav-item-7"];
-document.querySelector('nav').prepend(link2);
-
-navigation.forEach(element => element.setAttribute('style', 'color: green'))
+const newNavigation = document.querySelectorAll('nav a');
+newNavigation.forEach(element => element.setAttribute('style', 'color: green'));
 
 // Update the Masthead Text
 document.querySelector('.cta-text h1').textContent = siteContent.cta.h1;
@@ -108,4 +110,11 @@ document.querySelectorAll('.contact p')[0].style.whiteSpace = 'pre-line';
 // Footer/Copyright
 document.querySelector('footer p').textContent = siteContent.footer.copyright;
 
+// Styling
+document.querySelector('nav a').onmouseover = function() {
+  this.style.transform = 'scale(1.5)';
+}
 
+document.querySelector('nav a').onmouseout = function() {
+  this.style.transform = 'scale(1.0)';
+}
