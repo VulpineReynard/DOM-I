@@ -43,8 +43,7 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
-const navigation = document.querySelectorAll('nav a');
-console.log(navigation);
+let navigation = document.querySelectorAll('nav a');
 
 // Navigation links
 navigation[0].textContent = siteContent.nav["nav-item-1"];
@@ -53,6 +52,10 @@ navigation[2].textContent = siteContent.nav["nav-item-3"];
 navigation[3].textContent = siteContent.nav["nav-item-4"];
 navigation[4].textContent = siteContent.nav["nav-item-5"];
 navigation[5].textContent = siteContent.nav["nav-item-6"];
+
+// navigation.forEach((element, index) => {
+//   element.textContent = siteContent.nav["nav-item-" + index];
+// });
 
 //Add 2 more links to navigation bar
 let link = document.createElement("a");
@@ -65,8 +68,8 @@ link.setAttribute('href', '#');
 link2.setAttribute('href', '#');
 link2.textContent = siteContent.nav["nav-item-8"];
 
-const newNavigation = document.querySelectorAll('nav a');
-newNavigation.forEach(element => element.setAttribute('style', 'color: green'));
+navigation = document.querySelectorAll('nav a');
+navigation.forEach(element => element.setAttribute('style', 'color: green'));
 
 
 // Update the Masthead Text
@@ -119,7 +122,7 @@ const linkHover = function() {
   this.style.padding = '2px';
   this.style.borderRadius = '5px';
   this.style.textDecoration = 'none';
-  this.style.boxShadow = '0 3px 3px 0 darkgrey'
+  this.style.boxShadow = '0 3px 3px 0 darkgrey';
 }
 
 const linkHover2 = function() {
@@ -127,7 +130,7 @@ const linkHover2 = function() {
   this.style.backgroundColor = 'lightblue';
 }
 
-newNavigation.forEach(element => { 
+navigation.forEach(element => { 
   element.addEventListener("mouseover", linkHover);
   element.addEventListener("mouseout", linkHover2);
 });
@@ -135,6 +138,7 @@ newNavigation.forEach(element => {
 const changeText = function() {
   document.querySelector('.cta-text h1').textContent = "DOM \n Is \n Painful";
   document.querySelector('.cta #cta-img').setAttribute('src', 'img/stress.jpg');
+  document.querySelector('body').style.backgroundColor = "black";
 }
 
 document.querySelector(".cta-text button").addEventListener("click", changeText);
